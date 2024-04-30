@@ -5,3 +5,5 @@ resource "azurerm_virtual_network" "testvnet" {
   resource_group_name = azurerm_resource_group.testrg.name
 }
 
+#Need to add new vnet
+
