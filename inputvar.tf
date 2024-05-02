@@ -1,16 +1,4 @@
-variable "rgname" {
-
-}
-
-variable "address_space" {
-}
-
-
-
-variable "address_space1" {
-
-}
-
-variable "location" {
-
-}
+variable "rgname" {}
+variable "address_space" {}
+variable "location" {}
+variable "address_prefixes" {}
