@@ -1,3 +1,5 @@
+#This is Storage account
+
 resource "azurerm_storage_account" "demostg" {
   count                    = 3
   name                     = "demotsg654981${count.index}"
