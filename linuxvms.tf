@@ -1,5 +1,5 @@
 resource "azurerm_public_ip" "demoips" {
-  count               = 3
+  count               = 0
   resource_group_name = azurerm_resource_group.testrg.name
   allocation_method   = "Static"
   location            = azurerm_resource_group.testrg.location
@@ -7,7 +7,7 @@ resource "azurerm_public_ip" "demoips" {
 }
 
 resource "azurerm_network_interface" "demonics" {
-  count               = 3
+  count               = 0
   name                = "linuxvm-nic-${count.index}"
   resource_group_name = azurerm_resource_group.testrg.name
   location            = azurerm_resource_group.testrg.location
@@ -25,7 +25,7 @@ resource "azurerm_network_interface" "demonics" {
 
 resource "azurerm_linux_virtual_machine" "demovms" {
   depends_on          = [azurerm_key_vault.demokeyvault, azurerm_key_vault_secret.vm_kv_secrets]
-  count               = 3
+  count               = 0
   name                = "linuxvm-${count.index}"
   resource_group_name = azurerm_resource_group.testrg.name
   location            = azurerm_resource_group.testrg.location
