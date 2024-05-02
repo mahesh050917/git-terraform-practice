@@ -3,13 +3,14 @@ resource "azurerm_virtual_network" "testvnet" {
   address_space       = var.address_space
   location            = azurerm_resource_group.testrg.location
   resource_group_name = azurerm_resource_group.testrg.name
+
 }
 
-#Need to add new vnet
 
-resource "azurerm_virtual_network" "testvnet1" {
-  name                = "${var.rgname}-vnet1"
-  address_space       = var.address_space1
-  location            = azurerm_resource_group.testrg.location
-  resource_group_name = azurerm_resource_group.testrg.name
+resource "azurerm_subnet" "testsubnets" {
+  count                = 3
+  name                 = "${var.rgname}-snet${count.index}"
+  virtual_network_name = azurerm_virtual_network.testvnet.name
+  address_prefixes     = [element(var.address_prefixes, count.index)]
+  resource_group_name  = azurerm_resource_group.testrg.name
 }
